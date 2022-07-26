@@ -107,14 +107,6 @@ rules:
 #### Sample returned Object based on the rules above
 
 ```python
-{'topics': {'title': {0: {'attrs': {'href': 'https://paulbutler.org/2022/why-is-it-so-hard-to-give-google-money/'},
-                          'text': 'Why is it so hard to give Google money?'},
-                      1: {'attrs': {'href': 'https://mullvad.net/en/blog/2022/7/26/mullvad-is-now-available-on-amazon-us-se/'},
-                          'text': 'Mullvad is now available on Amazon'}}}}
-```
-
-
-```python
 {'comments': {'texts': {0: {'text': 'Wonder how much money & resources Shopify '
                                     'spent on all of their NFT features & '
                                     'integrations over the last months, how '
