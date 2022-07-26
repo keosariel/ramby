@@ -1,5 +1,5 @@
 # ramby.py
-# Ramby simple way to setup a webscraper, also making
+# Ramby is a simple way to setup a webscraper, also making
 # it easy to update without having to touch your code or add more
 # if-statements
 
