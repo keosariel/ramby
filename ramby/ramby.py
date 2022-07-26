@@ -1,7 +1,7 @@
 # ramby.py
-# Ramby is a simple way to setup a webscraper, also making
-# it easy to update without having to touch your code or add more
-# if-statements
+"""Ramby is a simple way to setup a webscraper, also making it easy to update without having to t
+ouch your code or add more if-statements
+"""
 
 from bs4 import BeautifulSoup
 from collections import defaultdict
@@ -9,9 +9,6 @@ import requests
 from urllib.parse import urlparse
 from werkzeug.routing import Map, Rule, NotFound
 import yaml
-
-__version__ = "0.0.1"
-__author__ = "keosariel"
 
 class Ramby:
     def __init__(self, config_file):
