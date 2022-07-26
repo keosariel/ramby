@@ -125,7 +125,7 @@ class Ramby:
             data = dict()
 
             for prop_name, p_prop in props.items():
-                prop_data = defaultdict(lambda : defaultdict(dict))
+                prop_data = defaultdict(dict)
 
                 selector = p_prop.get('selector')
 
@@ -146,12 +146,13 @@ class Ramby:
                                     prop_data[i]["html"] = str(item)
                                 
                                 for attr in p_prop.get("attrs", []):
-                                    prop_data[i]["attrs"] = dict() or prop_data[i]["attrs"]
+                                    if not prop_data[i].get("attrs"):
+                                        prop_data[i]["attrs"] = dict()
 
                                     prop_data[i]["attrs"][attr] = item.attrs.get(attr)
 
 
-                data[prop_name] = prop_data
-            object_data[object_name] = data
+                data[prop_name] = dict(prop_data)
+            object_data[object_name] = dict(data)
 
         return object_data
