@@ -58,7 +58,7 @@ rules:
                           'text': 'Mullvad is now available on Amazon'}}}}
 ```
 
-#### And if you choose to select comments
+#### And if you choose to scrape a post and it's comments
 
 ```yaml
 host: news.ycombinator.com
