@@ -18,15 +18,13 @@ class Ramby:
         with open(config_file) as stream:
             config = yaml.safe_load(stream)
 
-        valid_keys = ("headers", "host", "rules")
+        valid_keys = ("host", "rules")
 
         if set(valid_keys).intersection(set(config.keys())) != set(valid_keys):
             raise ValueError("Expected: %s" % (', '.join(valid_keys)))
         
         self._host = config["host"]
         self._rules = config["rules"]
-
-        self.headers = config["headers"]
         self.rule_map = Map()
 
         self._add_patterns()
@@ -99,7 +97,7 @@ class Ramby:
 
         rule_name, values = self.match(url)
 
-        res = requests.get(url, headers=headers or self.headers)
+        res = requests.get(url, headers=headers)
 
         if res.status_code == 200:
             return self._scrape(res.text, values)

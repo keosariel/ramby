@@ -1,42 +1,32 @@
 # A simple hackernews ramby config
 
 host: news.ycombinator.com
-headers: 
-  User-Agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 \
-                 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36"
 
 rules:
-    # Get top posts on hackernews
-    home:
-      pattern: /
-      topics:
-        title:
-          selector: '.athing .title > a'
-          text: true
-          count: 20
-          attrs:
-            - href
+    hompage:
+        pattern: '/' # The `/` path signifies we use the `homepage` rule 
+        topics:    # This would denote a section in the homepage, making it easy to add other obejects if needed i.e all_authors
+            title: # An object property
+                selector: '.athing .title > a' # The title target
+                text: true                     # We would want the text inside the target element
+                # html: true is optional
+                count: 2                       # The amount of elements to return
+                attrs:                         # Specify the html attributes you'd want
+                    - href                     # Also taking the link to the post
+    
+    posts:
+        pattern: /item/
+        post:
+            title: 
+                selector: '.fatitem:first-child .title > a'
+                count: 1
+                text: true
+                attrs: 
+                    - href 
 
-    # Get a posts data and comments
-    post:
-      pattern: /item/
-      head:
-        title: 
-          selector: '.fatitem:first-child .title > a'
-          count: 1
-          text: true
-          html: true
-          attrs: 
-            - href 
+        comments:
+            texts:
+                selector: '.comment .commtext'
+                count: 2
+                text: true
 
-        comment_count: 
-          selector: '.fatitem:first-child tr:nth-child(2) a:last-child'
-          text: true
-          html: true
-
-      comments:
-        texts:
-          selector: '.comment .commtext'
-          count: 10
-          text: true
-      
