@@ -16,9 +16,11 @@ data = scraper.scrape("https://news.ycombinator.com/item?id=32237445")
 ```
 
 ## Configuration
+
 A configuration file needs two fields, `HOST` and `RULES`.
 
 ### HOST
+
 The `HOST` holds the base domain of the site you which to scrape, also keep in mind an error would be thrown if you choose to scrape a `URL` with a different `HOST`.
 
 So in practice the `HOST` would be added to the configuration like so:
@@ -28,6 +30,7 @@ host: example.com
 ```
 
 ### RULES
+
 A `RULE` is basically a way to target certain elements in a webpage. For example you want to select all the titles of the top posts in [hackernews](https://news.ycombinator.com) you'd select them like so:
 
 ```yaml
@@ -56,6 +59,7 @@ rules:
 ```
 
 #### And if you choose to select comments
+
 ```yaml
 host: news.ycombinator.com
 
@@ -70,7 +74,7 @@ rules:
                 count: 2                       # The amount of elements to return
                 attrs:                         # Specify the html attributes you'd want
                     - href                     # Also taking the link to the post
-                    
+                  
     posts:
         pattern: /item/
         post:
@@ -88,6 +92,27 @@ rules:
                 text: true
 
 ```
+
+
+#### Sample returned Object based on the rules above
+
+```python
+{'topics': {'title': {0: {'attrs': {'href': 'https://paulbutler.org/2022/why-is-it-so-hard-to-give-google-money/'},
+                          'text': 'Why is it so hard to give Google money?'},
+                      1: {'attrs': {'href': 'https://mullvad.net/en/blog/2022/7/26/mullvad-is-now-available-on-amazon-us-se/'},
+                          'text': 'Mullvad is now available on Amazon'}}}}
+```
+
+
+#### Sample returned Object based on the rules above
+
+```python
+{'topics': {'title': {0: {'attrs': {'href': 'https://paulbutler.org/2022/why-is-it-so-hard-to-give-google-money/'},
+                          'text': 'Why is it so hard to give Google money?'},
+                      1: {'attrs': {'href': 'https://mullvad.net/en/blog/2022/7/26/mullvad-is-now-available-on-amazon-us-se/'},
+                          'text': 'Mullvad is now available on Amazon'}}}}
+```
+
 
 ```python
 {'comments': {'texts': {0: {'text': 'Wonder how much money & resources Shopify '
